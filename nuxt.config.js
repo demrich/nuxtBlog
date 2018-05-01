@@ -43,8 +43,13 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt'
-  ],
+    'bootstrap-vue/nuxt',
+    [
+      'storyblok-nuxt', 
+      { accessToken: process.env.ACCESS_TOKEN, 
+        cacheProvider: 'memory' }
+    ],
+  ], 
   /*
   ** Axios module configuration
   */

@@ -17,24 +17,51 @@ export default {
   components: {
     PostPreview
   },
-  data() {
-    return {
-      posts:[
-        {
-        title:'A New Beginning',
-        previewText: 'This will be awesome. Don\'t miss it!',
-        thumbnailURL: 'https://dummyimage.com/300X300/000/fff',
-        id: 'a-new-beginning'
-
-      },
-      {
-        title:'A Second Beginning',
-        previewText: 'This will still be awesome.',
-        thumbnailURL: 'https://dummyimage.com/300X300/000/fff',
-        id: 'a-second-beginning'
+  asyncData(context) {
+    return context.app.$storyapi.get('cdn/stories', {
+      version: 'draft',
+      starts_with: 'blog/'
+    }).then( res => {
+      console.log(res);
+      return  {
+        posts: res.data.stories.map(blogPost => {
+        return {
+          title: blogPost.content.title,
+          previewText: blogPost.content.summary,
+          thumbnailURL: blogPost.content.thumbnail,
+          id: blogPost.slug
+        }
+      })
       }
-      ]
-    }
+    })
+    
   }
+
+  // data() {
+  //   return {
+  //     posts:[
+  //       {
+  //       title:'A New Beginning',
+  //       previewText: 'This will be awesome. Don\'t miss it!',
+  //       thumbnailURL: 'https://dummyimage.com/250X250/000/fff',
+  //       id: 'a-new-beginning'
+
+  //     },
+  //     {
+  //       title:'A Second Beginning',
+  //       previewText: 'This will still be awesome.',
+  //       thumbnailURL: 'https://dummyimage.com/250X250/000/fff',
+  //       id: 'a-second-beginning'
+  //     },
+  //     {
+  //       title:'A Third Beginning',
+  //       previewText: 'Can you even have three beginnings?',
+  //       thumbnailURL: 'https://dummyimage.com/250X250/000/fff',
+  //       id: 'a-third-beginning'
+  //     }
+  //     ]
+  //   }
+  // }
+
 }
 </script>
