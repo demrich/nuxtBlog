@@ -1,8 +1,21 @@
 html{
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    a {
+        color: #000;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    h1 {
+        font-weight: 300;
+        letter-spacing: .3rem;
+
+    }
+    p{
+        font-weight: 100;
+    }
     .main-header {
         margin-top: 5rem;
-        
     }
     .main-nav {
         position:fixed;
@@ -40,4 +53,37 @@ html{
             }
         }
     }
+
+    .post-preview-thumbnail {
+        width: 300px;
+        height: 300px;
+    }
+
+    .blog-blocks {
+        padding-top: 2rem;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row wrap;
+        justify-content: space-around;
+    }
+
+    .post-preview {
+        border-radius: 3px;
+        width: 300px;
+        margin: 1rem;
+        &:hover {
+              box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.5);
+        }
+      }
+
+      .post-preview-content {
+        text-align: center;
+        padding: 1rem;
+      }
+      .block{
+          max-width:23rem;
+          justify-content: center;
+          align-content: center;
+      }
 } 

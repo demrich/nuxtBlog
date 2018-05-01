@@ -1,28 +1,40 @@
 
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        Portfolio
-      </h1>
-      <h2 class="subtitle">
-        Portfolio for design and development
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
-      </div>
-    </div>
+  <section class="blog-blocks">
+    <PostPreview
+    v-for="post in posts"
+    :key="post.id" 
+    :title="post.title"
+    :excerpt="post.previewText"
+    :thumbnailImage="post.thumbnailURL"
+    :id="post.id" />
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
+import PostPreview from "@/components/Blog/PostPreview";
 export default {
   components: {
-    Logo
+    PostPreview
+  },
+  data() {
+    return {
+      posts:[
+        {
+        title:'A New Beginning',
+        previewText: 'This will be awesome. Don\'t miss it!',
+        thumbnailURL: 'https://dummyimage.com/300X300/000/fff',
+        id: 'a-new-beginning'
+
+      },
+      {
+        title:'A Second Beginning',
+        previewText: 'This will still be awesome.',
+        thumbnailURL: 'https://dummyimage.com/300X300/000/fff',
+        id: 'a-second-beginning'
+      }
+      ]
+    }
   }
 }
 </script>
