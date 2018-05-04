@@ -1,7 +1,7 @@
 <template>
   <section class="container block">
     <div>
-      <nuxt-link :to="id">
+      <nuxt-link :to="'/blog/' + id">
         <article class="post-preview">
           <div :style="{backgroundImage: 'url(' + thumbnailImage + ')'}" class="post-preview-thumbnail"></div>
           <div class="post-preview-content">

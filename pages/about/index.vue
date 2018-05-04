@@ -1,5 +1,5 @@
 <template>
-  <section id="about-page">
+  <section id="about-page" v-editable="blok">
 
     <div class="container">
           <h1>{{ title }}</h1>
@@ -23,10 +23,17 @@
         .then(res => {
           console.log(res.data.story);
           return {
+            blok: res.data.story.content,
             title: res.data.story.content.title,
             content: res.data.story.content.body
           }
         })
+    },
+    mounted(){
+      this.$storyblok.init();
+      this.$storyblok.on('change', () => {
+        location.reload(true);
+      })
     } 
   }
 </script>
